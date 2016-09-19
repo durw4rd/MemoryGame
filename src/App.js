@@ -3,15 +3,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import appLoading from './actions/app-loading'
 import Loader from './components/Loader'
+import SignInOrUp from './containers/SignInOrUp'
 
 class App extends Component {
-  toggleLoading() {
-    const { loading, appLoading } = this.props
-    appLoading(!loading)
-  }
-
   render() {
     const { loading } = this.props
 
@@ -19,9 +14,7 @@ class App extends Component {
       <div className="main">
         <Loader loading={ loading } />
         <h1>Memory Game</h1>
-        <button onClick={this.toggleLoading.bind(this)}>
-          Toggle Loading!
-        </button>
+        <SignInOrUp />
       </div>
     );
   }
@@ -33,4 +26,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { appLoading })(App)
+export default connect(mapStateToProps, { })(App)
